@@ -3,8 +3,12 @@ import { Card, CardImg, CardImgOverlay, CardTitle } from 'reactstrap';
 
 class Menu extends Component {
 
+    constructor(props){
+        super(props);
+        console.log('Menu Components constructor invoked');
+    }
     componentDidMount() {
-        console.log('Menu Components componentDidMount is invoked');
+        console.log('Menu Components componentDidMount invoked');
     }
 
 
