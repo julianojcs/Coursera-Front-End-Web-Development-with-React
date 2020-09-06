@@ -8,6 +8,6 @@ function Brand() {
             Ristorante {company.name}
         </h4>
     );
-  }
+}
   
-  export default Brand;
+export default Brand;
