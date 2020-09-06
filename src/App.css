@@ -2,6 +2,11 @@ li > p:nth-child(odd) {
     margin-bottom: 0;
 }
 
+.logoImg {
+    height: 30px;
+    width: 41px;
+}
+
 .row-header{
     margin:0px auto;
     padding:0px auto;
