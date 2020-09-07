@@ -5,7 +5,7 @@ import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
         return(
             <div className="col-12 col-md-5 m-1 mx-auto">
                 <Card className="mx-auto">
-                    <CardImg className="vw-100" src={dish.image} alt={dish.name} />
+                    <CardImg src={dish.image} alt={dish.name} />
                     <CardBody>
                         <CardTitle>{dish.name}</CardTitle>
                         <CardText>{dish.description}</CardText>
