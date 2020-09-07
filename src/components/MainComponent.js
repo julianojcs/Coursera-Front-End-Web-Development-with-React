@@ -38,11 +38,17 @@ class Main extends Component {
         }
         
         const DishWithId = ({match}) => {
-            return(
-                <DishDetail dish={this.state.dishes.filter((dish) => dish.id === parseInt(match.params.dishId,10))[0]} 
-                    comments={this.state.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId,10))}
-                />
-            )
+            const dish = this.state.dishes.filter((dish) => dish.id === parseInt(match.params.dishId,10))[0];
+            console.log(dish);
+            if (dish) {
+                return(
+                    <DishDetail 
+                        dish={dish} 
+                        comments={this.state.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId,10))}
+                    />
+                )
+            } else
+                return 'Page not found!';
         }
 
         return (
