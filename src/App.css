@@ -32,6 +32,10 @@ li > p:nth-child(odd) {
     border-radius: 0;
 }
 
+.card {
+    max-width: 268px;
+}
+
 address{
     font-size:80%;
     margin:0px;
