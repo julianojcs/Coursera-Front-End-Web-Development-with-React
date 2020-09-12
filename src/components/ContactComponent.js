@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { Breadcrumb, BreadcrumbItem, Button, Form, FormGroup, Label, Input, Col, FormFeedback } from 'reactstrap';
+import Select from 'react-select';
 import { Link } from 'react-router-dom';
+import { groupedOptions, formatGroupLabel, colourStyles } from '../data/data';
 
 class Contact extends Component {
 
@@ -15,6 +17,8 @@ class Contact extends Component {
             agree: false,
             contactType: 'Tel.',
             message: '',
+            // language: [{ value: '1', label: 'English' }],
+            language: [ groupedOptions[1].options[0], groupedOptions[0].options[0]] ,
             touched: {
                 firstname: false,
                 lastname: false,
@@ -24,7 +28,17 @@ class Contact extends Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSelectChange = this.handleSelectChange.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
+    }
+
+    handleSelectChange(selectedOption) {
+        this.setState({
+            language: selectedOption
+        });
+        if (selectedOption)
+            console.log(selectedOption)
+            //document.write(`Option selected:`, selectedOption); //this prints the selected option    
     }
 
     handleInputChange(event) {
@@ -68,7 +82,7 @@ class Contact extends Component {
             errors.lastname = 'Last Name should be <= 10 characters';
 
         const reg = /^\d+$/;
-        if (this.state.touched.telnum && reg.test(telnum))
+        if (this.state.touched.telnum && !reg.test(telnum))
             errors.telnum = 'Tel. Number should contain only characters numbers';
 
         if (this.state.touched.email && email.split('').filter(x => x === '@').length !== 1)
@@ -78,6 +92,7 @@ class Contact extends Component {
     }
     render() {
         const errors = this.validade(this.state.firstname, this.state.lastname, this.state.telnum, this.state.email);
+
         return (
             <div className="container">
                 <div className="row">
@@ -168,9 +183,25 @@ class Contact extends Component {
                                 </Col>
                                 <Col md={{size: 3, offset: 1}}>
                                     <Input type="select" name="contactType" value={this.state.contactType} onChange={this.handleInputChange}>
-                                        <option>tel.</option>
+                                        <option>Tel.</option>
                                         <option>Email</option>
                                     </Input>
+                                </Col>
+                            </FormGroup>
+                            <FormGroup row>
+                                <Label htmlFor="language" md={2}>Answer Language</Label>
+                                <Col md={10}>
+                                    <Select name="language" 
+                                        isMulti 
+                                        isSearchable
+                                        isClearable={false} 
+                                        closeMenuOnSelect={false}
+                                        formatGroupLabel={formatGroupLabel}
+                                        styles={colourStyles}
+                                        placeholder='Select a language'
+                                        value={this.state.language} 
+                                        options={groupedOptions}
+                                        onChange={this.handleSelectChange} />
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
