@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input, ModalFooter } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
@@ -13,6 +13,8 @@ class Header extends Component {
         this.toggleNav = this.toggleNav.bind(this)
         this.toggleModal = this.toggleModal.bind(this)
         this.handleLogin = this.handleLogin.bind(this)
+
+        this.input = React.createRef();
     }
 
     toggleNav() {
@@ -94,11 +96,11 @@ class Header extends Component {
                         <Form onSubmit={this.handleLogin}>
                             <FormGroup>
                                 <Label htmlFor="username">Username</Label>
-                                <Input type="text" id="username" name="username" innerRef={(input) => this.username = input} />
+                                <Input type="text" id="username" name="username" innerRef={(input) => this.username = input} bsSize="sm" />
                             </FormGroup>
                             <FormGroup>
                                 <Label htmlFor="password">Password</Label>
-                                <Input type="password" id="password" name="password" innerRef={(input) => this.password = input} />
+                                <Input type="password" id="password" name="password" innerRef={(input) => this.password = input} bsSize="sm" />
                             </FormGroup>
                             <FormGroup check>
                                 <Label check>
@@ -109,6 +111,9 @@ class Header extends Component {
                             <Button type="submit" className="bg-primary">Login</Button>
                         </Form>
                     </ModalBody>
+                    <ModalFooter>
+                        Footer
+                    </ModalFooter>
                 </Modal>
             </>
         );
