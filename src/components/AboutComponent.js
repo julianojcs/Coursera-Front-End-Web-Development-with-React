@@ -6,7 +6,7 @@ function RenderLeader({leader}) {
     return(
         <Media className="mb-3" tag="li">
             <Media left top>
-                <Media className="rounded-circle" object src={leader.image} alt={leader.name} />
+                <Media className="rounded-circle" width={105} height={105} object src={leader.image} alt={leader.name} />
             </Media>
             <Media className="ml-5" body>
                 <Media heading>{leader.name}</Media>
