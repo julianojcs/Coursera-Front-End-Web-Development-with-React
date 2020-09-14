@@ -15,7 +15,8 @@ class Contact extends Component {
 
     constructor(props) {
         super(props);
-
+        
+        console.log(this.props.defaultValue.language);        
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -82,6 +83,7 @@ class Contact extends Component {
                                 <Col md={10}>
                                     <Control.text model=".firstname" className="form-control" id="firstname" name="firstname" 
                                         placeholder="First Name"
+                                        defaultValue={this.props.defaultValue.firstName}
                                         validators={{
                                             required, minLength: minLength(3), maxLength: maxLength(15)
                                         }} 
@@ -99,6 +101,7 @@ class Contact extends Component {
                                 <Label htmlFor="lastname" md={2}>last Name</Label>
                                 <Col md={10}>
                                     <Control.text model=".lastname" className="form-control" name="lastname" placeholder="Last Name" 
+                                        defaultValue={this.props.defaultValue.lastName}
                                         validators={{
                                             required, minLength: minLength(3), maxLength: maxLength(15)
                                         }} 
@@ -176,6 +179,7 @@ class Contact extends Component {
                                         formatGroupLabel={formatGroupLabel}
                                         styles={colourStyles}
                                         placeholder='Select a language'
+                                        defaultValue={[ groupedOptions[1].options[0], groupedOptions[0].options[0]]}
                                         options={groupedOptions}
                                     />
                                 </Col>

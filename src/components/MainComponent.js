@@ -14,13 +14,14 @@ const mapStateToProps = state => {
         dishes: state.dishes,
         comments: state.comments,
         promotions: state.promotions,
-        leaders: state.leaders
+        leaders: state.leaders,
+        defaultValue: state.defaultValue
     }
 }
 
 class Main extends Component {
     render() {
-
+        console.log(this.props);
         const HomePage = () => {
             return(
                 <Home 
@@ -46,7 +47,7 @@ class Main extends Component {
                     <Route path="/home" component={HomePage} />
                     <Route exact path="/menu" component={() => <Menu dishes={this.props.dishes} />} />
                     <Route path="/menu/:dishId" component={DishWithId} />
-                    <Route exact path="/contactus" component={Contact} />
+                    <Route exact path="/contactus" component={() => <Contact defaultValue={this.props.defaultValue} />} />
                     <Route exact path="/aboutus" component={() => <About leaders={this.props.leaders} />} />
                     <Redirect to="/home" />
                 </Switch>
