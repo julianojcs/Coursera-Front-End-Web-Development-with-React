@@ -1,3 +1,7 @@
+.mb-neg-rem-1 {
+    margin-bottom: -1rem;
+}
+
 .errors {
     display: grid;
     width: 100%;
