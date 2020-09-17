@@ -15,7 +15,7 @@ const mapStateToProps = state => {
         comments: state.comments,
         promotions: state.promotions,
         leaders: state.leaders,
-        defaultValue: state.defaultValue
+        defaultValues: state.defaultValues
     }
 }
 
@@ -47,7 +47,7 @@ class Main extends Component {
                     <Route path="/home" component={HomePage} />
                     <Route exact path="/menu" component={() => <Menu dishes={this.props.dishes} />} />
                     <Route path="/menu/:dishId" component={DishWithId} />
-                    <Route exact path="/contactus" component={() => <Contact defaultValue={this.props.defaultValue} />} />
+                    <Route exact path="/contactus" component={() => <Contact defaultValues={this.props.defaultValues} />} />
                     <Route exact path="/aboutus" component={() => <About leaders={this.props.leaders} />} />
                     <Redirect to="/home" />
                 </Switch>

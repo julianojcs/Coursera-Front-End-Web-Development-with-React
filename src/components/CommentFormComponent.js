@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input, Col, Row } from 'reactstrap';
-import { Control, LocalForm, Field, Errors } from 'react-redux-form'
+import { Button, Modal, ModalHeader, ModalBody, Label, Row } from 'reactstrap';
+import { Control, LocalForm, Errors } from 'react-redux-form'
 
 const required = (val) => val && val.length
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => (val) && (val.length >= len);
-const rated = (val) => /^[1-5]{1}$/.test(val);
+// const rated = (val) => /^[1-5]{1}$/.test(val);
 
 class CommentForm extends Component {
     constructor(props) {

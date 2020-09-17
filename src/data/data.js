@@ -19,6 +19,12 @@ export const groupedOptions = [
     { label: 'Americas', color: '#253858', options: optionsAmericas, },
 ];
 
+
+export const DEFAULTVALUES = {
+    firstName: 'Juliano',
+    lastName: 'Silva' 
+};
+
 const groupStyles = {
     display: 'flex',
     alignItems: 'center',
