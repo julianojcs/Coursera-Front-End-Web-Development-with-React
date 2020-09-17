@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem, Button, Modal, ModalHeader, ModalBody, Label, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form'
+import Rating from 'react-rating';
 
 const required = (val) => val && val.length
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
@@ -30,9 +31,18 @@ const minLength = (len) => (val) => (val) && (val.length >= len);
                     <ul className="list-unstyled">
                         {comments.map((comment) => {
                             return (
-                                <li key={comment.id}>
-                                    <p>{comment.comment}</p>
-                                    <p className="blockquote-footer">{comment.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(comment.date)))}</p>
+                                <li key={comment.id} className="my-3">
+                                    <p className="m-0">{comment.comment}</p>
+                                    <p className="m-0">
+                                        <Rating 
+                                            className="text-warning"
+                                            initialRating={comment.rating} 
+                                            readonly 
+                                            emptySymbol="fa fa-star-o" 
+                                            fullSymbol="fa fa-star"
+                                        />
+                                    </p>
+                                    <p className="blockquote-footer m-0">{comment.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(comment.date)))}</p>
                                 </li>
                             );
                         })}

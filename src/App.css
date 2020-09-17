@@ -10,9 +10,9 @@
     color: #dc3545;
 }
 
-li > p:nth-child(odd) {
+/* li > p:nth-child(odd) {
     margin-bottom: 0;
-}
+} */
 
 .logoImg {
     height: 30px;
