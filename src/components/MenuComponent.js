@@ -1,30 +1,50 @@
 import React from 'react';
 import { Card, CardImg, CardImgOverlay, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { Loading } from './LoadingComponent';
 
-    function RenderMenuItem({ dish, onClick }) {
+function RenderMenuItem({ dish, onClick }) {
+    return(
+        <Card className="mx-auto">
+            <Link to={`/menu/${dish.id}`} >
+            <CardImg width="100%" src={dish.image} alt={dish.name} />
+            <CardImgOverlay className="mx-auto">
+                <CardTitle>{dish.name}</CardTitle>
+            </CardImgOverlay>
+            </Link>
+        </Card>
+    );
+}
+
+const Menu = (props) => {
+    //List of items
+    const menu = props.dishes.dishes.map((dish) => {
+        return (
+            <div key={dish.id} className="col-12 col-md-5 m-1 mx-auto">
+                <RenderMenuItem dish={dish} />
+            </div>
+        )
+    });
+
+    if (props.dishes.isLoading) {
         return(
-            <Card>
-                <Link to={`/menu/${dish.id}`} >
-                <CardImg width="100%" src={dish.image} alt={dish.name} />
-                <CardImgOverlay className="mx-auto">
-                    <CardTitle>{dish.name}</CardTitle>
-                </CardImgOverlay>
-                </Link>
-            </Card>
+            <div className="container">
+                <div className="row">
+                    <Loading />
+                </div>
+            </div>
         );
     }
-
-    const Menu = (props) => {
-        //List of items
-        const menu = props.dishes.map((dish) => {
-            return (
-                <div key={dish.id} className="col-12 col-md-5 m-1 mx-auto">
-                    <RenderMenuItem dish={dish} />
+    else if(props.dishes.errMess) {
+        return(
+            <div className="container">
+                <div className="row">
+                    <h4>{props.dishes.errMess}</h4>
                 </div>
-            )
-        });
-
+            </div>
+        );
+    }
+    else {
         return (
             <div className="container">
                 <div className="row">
@@ -43,6 +63,7 @@ import { Link } from 'react-router-dom';
             </div>
         );
     }
+}
 
 
 export default Menu;

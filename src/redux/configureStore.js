@@ -1,9 +1,11 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Dishes } from './dishes';
 import { Comments } from './comments';
 import { Promotions } from './promotions';
 import { Leaders } from './leaders';
 import { DefaultValues } from './defaultValues';
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 
 export const ConfigureStore = () => {
     const store = createStore(
@@ -13,7 +15,8 @@ export const ConfigureStore = () => {
             promotions: Promotions,
             leaders: Leaders,
             defaultValues: DefaultValues
-        })
+        }), 
+        applyMiddleware(thunk, logger)
     );
     
     return store;
