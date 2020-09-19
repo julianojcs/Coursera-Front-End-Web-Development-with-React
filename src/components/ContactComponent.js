@@ -3,7 +3,7 @@ import { Breadcrumb, BreadcrumbItem, Button, Label, Col, Row } from 'reactstrap'
 import Select from 'react-select';
 import { Link } from 'react-router-dom';
 import { groupedOptions, formatGroupLabel, colourStyles } from '../data/data';
-import { Control, LocalForm, Field, Errors } from 'react-redux-form'
+import { Control, Form, Field, Errors, actions } from 'react-redux-form'
 
 const required = (val) => val && val.length
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
@@ -15,14 +15,14 @@ class Contact extends Component {
 
     constructor(props) {
         super(props);
-        
-        console.log(this.props.defaultValues.firstName);        
+      
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit(values){
         console.log("Current State is" + JSON.stringify(values));
         alert("Current State is" + JSON.stringify(values));
+        this.props.resetFeedbackForm();
     }
 
     render() {
@@ -77,13 +77,12 @@ class Contact extends Component {
                         <h3>Send us Your Feedback</h3>
                     </div>
                     <div className="col-12 col-md-9">
-                        <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
+                        <Form model="feedback" onSubmit={(values) => this.handleSubmit(values)}>
                             <Row className="form-group">
                                 <Label htmlFor="firstname" md={2}>First Name</Label>
                                 <Col md={10}>
                                     <Control.text model=".firstname" className="form-control" id="firstname" name="firstname" 
                                         placeholder="First Name"
-                                        defaultValue={this.props.defaultValues.firstName}
                                         validators={{
                                             required, minLength: minLength(3), maxLength: maxLength(15)
                                         }} 
@@ -101,7 +100,6 @@ class Contact extends Component {
                                 <Label htmlFor="lastname" md={2}>last Name</Label>
                                 <Col md={10}>
                                     <Control.text model=".lastname" className="form-control" name="lastname" placeholder="Last Name" 
-                                        defaultValue={this.props.defaultValues.lastName}
                                         validators={{
                                             required, minLength: minLength(3), maxLength: maxLength(15)
                                         }} 
@@ -197,7 +195,7 @@ class Contact extends Component {
                                     </Button>
                                 </Col>
                             </Row>
-                        </LocalForm>
+                        </Form>
                     </div>
                 </div>
             </div>
