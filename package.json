@@ -9,6 +9,7 @@
     "bootstrap": "^4.5.2",
     "bootstrap-social": "^5.1.1",
     "chroma-js": "^2.1.0",
+    "cross-fetch": "^2.1.0",
     "elliptic": "^6.5.3",
     "font-awesome": "^4.7.0",
     "http-proxy": "^1.18.1",
