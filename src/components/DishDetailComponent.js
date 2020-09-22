@@ -14,7 +14,7 @@ const minLength = (len) => (val) => (val) && (val.length >= len);
         return(
             <div className="col-12 col-md-5 m-1 mx-auto">
                 <Card className="mx-auto">
-                    <CardImg src={baseUrl + dish.image} alt={dish.name} />
+                    <CardImg top src={baseUrl + dish.image} alt={dish.name} />
                     <CardBody>
                         <CardTitle>{dish.name}</CardTitle>
                         <CardText>{dish.description}</CardText>

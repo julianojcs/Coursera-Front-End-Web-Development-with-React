@@ -4,7 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `json-server --watch ..\json-server\db.json -d 2000 -p 3001`
+### `cd .\json-server\`
+### `json-server --watch db.json -d 2000 -p 3001`
 
 Runs the json-server at port 3001 with 3000 milliseconds of delay
 
