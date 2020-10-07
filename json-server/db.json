@@ -217,6 +217,14 @@
       "comment": "Love ❤️ all foods.\nEverything was perfect!!!",
       "date": "2020-09-23T00:20:13.854Z",
       "id": 21
+    },
+    {
+      "dishId": 0,
+      "rating": "1",
+      "author": "Juliano Costa",
+      "comment": "teste",
+      "date": "2020-09-28T16:41:20.687Z",
+      "id": 22
     }
   ],
   "promotions": [

@@ -57,7 +57,7 @@ class CommentForm extends Component {
                                 />
                             </Row>
                             <Row className="form-group">
-                                <Label htmlFor="password">Your Name</Label>
+                                <Label htmlFor="author">Your Name</Label>
                                 <Control.text model=".author" className="form-control" id="author" name="author" 
                                         placeholder="Your Name"
                                         validators={{

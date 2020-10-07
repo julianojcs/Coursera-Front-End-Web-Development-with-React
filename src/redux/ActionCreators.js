@@ -1,11 +1,6 @@
 import * as ActionTypes from './ActionTypes';
 import { baseUrl } from '../shared/baseURL';
 
-export const addComment = (comment) => ({
-    type: ActionTypes.ADD_COMMENT, 
-    payload: comment
-});
-
 export const postComment = (dishId, rating, author, comment) => (dispatch) => {
 
     const newComment = {
@@ -32,6 +27,9 @@ export const postComment = (dishId, rating, author, comment) => (dispatch) => {
             error.response = response;
             throw error;
         }
+    // error => {
+    //     throw error;
+    // })
     }, error => {
         var errmess = new Error(error.message);
         throw errmess;
@@ -97,8 +95,9 @@ export const fetchComments = () => (dispatch) => {
         .catch(error => dispatch(commentsFailed(error.message)));
 }
 
-export const commentsLoading = () => ({
-    type: ActionTypes.DISHES_LOADING
+export const addComment = (comment) => ({
+    type: ActionTypes.ADD_COMMENT, 
+    payload: comment
 });
 
 export const commentsFailed = (errmess) => ({

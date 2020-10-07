@@ -3,7 +3,7 @@ import { Breadcrumb, BreadcrumbItem, Button, Label, Col, Row } from 'reactstrap'
 import Select from 'react-select';
 import { Link } from 'react-router-dom';
 import { groupedOptions, formatGroupLabel, colourStyles } from '../data/data';
-import { Control, Form, Field, Errors, actions } from 'react-redux-form'
+import { Control, Form, Field, Errors } from 'react-redux-form'
 
 const required = (val) => val && val.length
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
